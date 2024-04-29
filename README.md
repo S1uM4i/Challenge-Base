@@ -1,3 +1,3 @@
-# 题目基础镜像
+# Challenge Base
 
-此镜像用于构建题目基础镜像，包含一些基本库和工具的初始化镜像。
+This repository is used to store and build challenge base images, containing some basic libraries and binaries.
