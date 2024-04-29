@@ -1,4 +1,4 @@
-FROM containers.github.matrix.moe/w4terdr0p/challenge-base/xinetd:alpine AS builder
+FROM ghcr.io/s1um4i/challenge-base/xinetd:alpine AS builder
 
 FROM python:alpine
 
