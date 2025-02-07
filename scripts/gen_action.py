@@ -60,7 +60,7 @@ def gen_action(chall_dir, name):
         result = result.replace("<PRUNE_TAG_REGEX>", conf["prune_tag_regex"])
         result = result.replace(
             "<DEPENDENCY_PATHS>",
-            "\n      ".join([f"- \"{i}\"" for i in conf["depends_on"]]),
+            "\n      ".join([f'- "{i}"' for i in conf["depends_on"]]),
         )
 
         file_path = f".github/workflows/base.{conf['action_file']}.yml"

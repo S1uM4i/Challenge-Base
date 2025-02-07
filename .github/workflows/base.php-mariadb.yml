@@ -48,12 +48,18 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
+          
+      - name: Get lower case repository name
+        id: lower_repo
+        run: |
+          export REPO_NAME=${{ github.event.repository.name }}
+          echo "repo_name=${REPO_NAME@L}" >> $GITHUB_OUTPUT
 
       - name: Prune old packages
         uses: dataaxiom/ghcr-cleanup-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          package: ${{ github.repository }}/${{ env.NAME }}
+          package: ${{ steps.lower_repo.outputs.repo_name }}/${{ env.NAME }}
           use-regex: true
           exclude-tags: latest$|alpine$
           validate: true
