@@ -1,17 +1,17 @@
-name: Base-Numpy
+name: Numpy
 
 on:
   push:
     branches: ["main"]
     paths:
       - "base/numpy/**"
+      - ".github/workflows/base.numpy.yml"
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   NAME: numpy
-  ORGANIZATION: s1um4i
-  REPOSITORY: challenge-base
+  TAG: latest
 
 jobs:
   build-and-push-image:
@@ -37,23 +37,26 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
           tags: |
-            latest
+            ${{ env.TAG }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: base/${{ env.NAME }}
+          file: base/${{ env.NAME }}/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
 
       - name: Prune old packages
-        uses: vlaurin/action-ghcr-prune@v0.6.0
+        uses: dataaxiom/ghcr-cleanup-action@v1
         with:
-          dry-run: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          organization: ${{ env.ORGANIZATION }}
-          container: ${{ env.REPOSITORY }}/${{ env.NAME }}
-          keep-tags: |
-            latest
-          prune-untagged: true
+          package: ${{ github.repository }}/${{ env.NAME }}
+          use-regex: true
+          exclude-tags: latest$|alpine$
+          validate: true
+          dry-run: true
+          delete-untagged: true
+          delete-ghost-images: true
+          delete-partial-images: true

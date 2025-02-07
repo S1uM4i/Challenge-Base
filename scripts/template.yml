@@ -1,17 +1,17 @@
-name: Flask
+name: <ACTION_NAME>
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "base/flask/**"
-      - ".github/workflows/base.flask.yml"
+      <DEPENDENCY_PATHS>
+      - ".github/workflows/base.<ACTION_FILE>.yml"
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  NAME: flask
-  TAG: alpine
+  NAME: <NAME>
+  TAG: <TAG>
 
 jobs:
   build-and-push-image:
@@ -43,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: base/${{ env.NAME }}
-          file: base/${{ env.NAME }}/Dockerfile
+          file: base/${{ env.NAME }}/<DOCKERFILE>
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
@@ -54,7 +54,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           package: ${{ github.repository }}/${{ env.NAME }}
           use-regex: true
-          exclude-tags: latest$|alpine$
+          exclude-tags: <PRUNE_TAG_REGEX>
           validate: true
           dry-run: true
           delete-untagged: true

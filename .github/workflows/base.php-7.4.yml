@@ -1,17 +1,16 @@
-name: Base-PHP 7.4
+name: PHP 7.4
 
 on:
   push:
     branches: ["main"]
     paths:
       - "base/php/**"
+      - ".github/workflows/base.php-7.4.yml"
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
   NAME: php
-  ORGANIZATION: s1um4i
-  REPOSITORY: challenge-base
   TAG: 7.4-alpine
 
 jobs:
@@ -50,12 +49,14 @@ jobs:
           push: true
 
       - name: Prune old packages
-        uses: vlaurin/action-ghcr-prune@v0.6.0
+        uses: dataaxiom/ghcr-cleanup-action@v1
         with:
-          dry-run: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          organization: ${{ env.ORGANIZATION }}
-          container: ${{ env.REPOSITORY }}/${{ env.NAME }}
-          keep-tags: |
-            alpine$
-          prune-untagged: true
+          package: ${{ github.repository }}/${{ env.NAME }}
+          use-regex: true
+          exclude-tags: latest$|alpine$
+          validate: true
+          dry-run: true
+          delete-untagged: true
+          delete-ghost-images: true
+          delete-partial-images: true
