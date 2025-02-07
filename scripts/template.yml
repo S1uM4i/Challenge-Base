@@ -47,7 +47,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
-          
+
       - name: Get lower case repository name
         id: lower_repo
         run: |
@@ -62,7 +62,7 @@ jobs:
           use-regex: true
           exclude-tags: <PRUNE_TAG_REGEX>
           validate: true
-          dry-run: true
+          dry-run: false
           delete-untagged: true
           delete-ghost-images: true
           delete-partial-images: true
