@@ -1,19 +1,19 @@
-name: Base-PHP 8 with MySQL
+name: Base-PHP 7.4 with MySQL
 
 on:
   push:
     branches: ["main"]
     paths:
       - "base/php/**"
-      - "base/php-mysql/**"
+      - "base/php-mariadb/**"
   workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  NAME: php-mysql
+  NAME: php-mariadb
   ORGANIZATION: s1um4i
   REPOSITORY: challenge-base
-  TAG: alpine
+  TAG: 7.4-alpine
 
 jobs:
   build-and-push-image:
