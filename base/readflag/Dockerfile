@@ -3,7 +3,9 @@ FROM alpine AS builder
 RUN apk add --no-cache gcc musl-dev
 
 COPY readflag.c /readflag.c
-RUN gcc /readflag.c -o /readflag -O2 && chmod +s /readflag
+RUN gcc /readflag.c -o /readflag -Os -static && \
+    strip /readflag -o /readflag && \
+    chmod +s /readflag
 
 
 FROM scratch
