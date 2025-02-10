@@ -1,19 +1,16 @@
 FROM alpine AS builder
 
-RUN apk add --no-cache gcc musl-dev
+RUN apk add --no-cache gcc
 
-ADD src /src
-WORKDIR /src
+COPY readflag.S /readflag.S
 
-RUN gcc -static -nostdlib -Os -fno-asynchronous-unwind-tables \
-    -fno-stack-protector -z noseparate-code -Wl,--gc-sections \
-    -Wl,-T,linker.ld -o readflag readflag.c && \
+RUN gcc -static -nostdlib -Os -masm=intel -z noseparate-code -o readflag readflag.S && \
     strip --strip-all readflag && \
-    chmod +s readflag
+    chmod u+s readflag
 
 FROM scratch
 
 ADD --chown=root:root --chmod=400 flag /flag
-COPY --from=builder /src/readflag /readflag
+COPY --from=builder /readflag /readflag
 
 CMD ["/readflag"]
