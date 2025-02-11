@@ -3,7 +3,8 @@ name: Read Flag - Minimal
 on:
   push:
     branches: ["main"]
-    paths: - "base/readflag/**"
+    paths:
+      - "base/readflag/**"
       - ".github/workflows/base.readflag-minimal.yml"
   workflow_dispatch:
 

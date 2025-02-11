@@ -3,7 +3,8 @@ name: Numpy
 on:
   push:
     branches: ["main"]
-    paths: - "base/numpy/**"
+    paths:
+      - "base/numpy/**"
       - ".github/workflows/base.numpy.yml"
   workflow_dispatch:
 

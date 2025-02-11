@@ -3,7 +3,8 @@ name: Xinetd
 on:
   push:
     branches: ["main"]
-    paths: - "base/xinetd/**"
+    paths:
+      - "base/xinetd/**"
       - ".github/workflows/base.xinetd.yml"
   workflow_dispatch:
 

@@ -3,7 +3,8 @@ name: PHP 8
 on:
   push:
     branches: ["main"]
-    paths: - "base/php/**"
+    paths:
+      - "base/php/**"
       - ".github/workflows/base.php.yml"
   workflow_dispatch:
 

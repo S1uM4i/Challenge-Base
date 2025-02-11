@@ -3,7 +3,8 @@ name: Read Flag
 on:
   push:
     branches: ["main"]
-    paths: - "base/readflag/**"
+    paths:
+      - "base/readflag/**"
       - ".github/workflows/base.readflag.yml"
   workflow_dispatch:
 

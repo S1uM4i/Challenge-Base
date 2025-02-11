@@ -3,7 +3,8 @@ name: PHP 7.4 with MariaDB
 on:
   push:
     branches: ["main"]
-    paths: - "base/php/**"
+    paths:
+      - "base/php/**"
       - "base/php-mariadb/**"
       - ".github/workflows/base.php-7.4-mariadb.yml"
   workflow_dispatch:

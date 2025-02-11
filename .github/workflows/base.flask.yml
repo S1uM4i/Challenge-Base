@@ -3,7 +3,8 @@ name: Flask
 on:
   push:
     branches: ["main"]
-    paths: - "base/flask/**"
+    paths:
+      - "base/flask/**"
       - ".github/workflows/base.flask.yml"
   workflow_dispatch:
 

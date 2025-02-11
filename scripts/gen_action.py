@@ -57,7 +57,7 @@ def gen_action(chall_dir, name):
         result = result.replace("<TAG>", conf["tag"])
         result = result.replace("<NAME>", conf["name"])
         result = result.replace(
-            "<DEPENDENCY_PATHS>",
+            "#<DEPENDENCY_PATHS>",
             "\n      ".join([f'- "{i}"' for i in conf["depends_on"]]),
         )
 

@@ -3,7 +3,8 @@ name: <ACTION_NAME>
 on:
   push:
     branches: ["main"]
-    paths: <DEPENDENCY_PATHS>
+    paths:
+      #<DEPENDENCY_PATHS>
       - ".github/workflows/base.<ACTION_FILE>.yml"
   workflow_dispatch:
 

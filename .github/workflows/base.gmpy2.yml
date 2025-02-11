@@ -3,7 +3,8 @@ name: Gmpy2
 on:
   push:
     branches: ["main"]
-    paths: - "base/gmpy2/**"
+    paths:
+      - "base/gmpy2/**"
       - ".github/workflows/base.gmpy2.yml"
   workflow_dispatch:
 

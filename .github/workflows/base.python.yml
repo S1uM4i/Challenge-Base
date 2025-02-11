@@ -3,7 +3,8 @@ name: Python
 on:
   push:
     branches: ["main"]
-    paths: - "base/python/**"
+    paths:
+      - "base/python/**"
       - ".github/workflows/base.python.yml"
   workflow_dispatch:
 
