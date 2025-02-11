@@ -55,7 +55,7 @@ jobs:
       contents: read
       packages: write
     concurrency:
-      group: cleanup-images
+      group: cleanup-images-php
     steps:
       - name: Get lower case repository name
         id: lower_repo
