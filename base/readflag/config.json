@@ -1,11 +1,13 @@
 [
   {
-    "action_name": "Read Flag"
+    "action_name": "Read Flag",
+    "prune_tag_regex": "latest$|minimal$"
   },
   {
     "action_file": "readflag-minimal",
     "action_name": "Read Flag - Minimal",
     "dockerfile": "Dockerfile.minimal",
-    "tag": "minimal"
+    "tag": "minimal",
+    "prune_tag_regex": "latest$|minimal$"
   }
 ]

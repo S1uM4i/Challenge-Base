@@ -60,7 +60,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           package: ${{ steps.lower_repo.outputs.repo_name }}/${{ env.NAME }}
           use-regex: true
-          exclude-tags: latest$|alpine$
+          exclude-tags: latest$|minimal$
           validate: true
           dry-run: false
           delete-untagged: true
