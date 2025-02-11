@@ -27,7 +27,6 @@ DEFAULT_CONFIG = {
     "action_name": None,
     "action_file": None,
     "dockerfile": "Dockerfile",
-    "prune_tag_regex": "latest$|alpine$",
     "depends_on": None,
 }
 
@@ -57,7 +56,6 @@ def gen_action(chall_dir, name):
         result = result.replace("<DOCKERFILE>", conf["dockerfile"])
         result = result.replace("<TAG>", conf["tag"])
         result = result.replace("<NAME>", conf["name"])
-        result = result.replace("<PRUNE_TAG_REGEX>", conf["prune_tag_regex"])
         result = result.replace(
             "<DEPENDENCY_PATHS>",
             "\n      ".join([f'- "{i}"' for i in conf["depends_on"]]),
