@@ -4,8 +4,14 @@
     "tag": "alpine"
   },
   {
-    "action_name": "Python 3.11",
+    "action_file": "python-3.12",
+    "action_name": "Python 3.12",
+    "dockerfile": "Dockerfile.3.12",
+    "tag": "3.12-alpine"
+  },
+  {
     "action_file": "python-3.11",
+    "action_name": "Python 3.11",
     "dockerfile": "Dockerfile.3.11",
     "tag": "3.11-alpine"
   }
