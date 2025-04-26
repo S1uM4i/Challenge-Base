@@ -1,14 +1,20 @@
 [
   {
     "action_name": "PHP 8 with MariaDB",
+    "depends_on": [
+      "base/php/**"
+    ],
     "tag": "alpine",
-    "depends_on": ["base/php/**"]
+    "tier": 2
   },
   {
-    "action_name": "PHP 7.4 with MariaDB",
     "action_file": "php-7.4-mariadb",
+    "action_name": "PHP 7.4 with MariaDB",
+    "depends_on": [
+      "base/php/**"
+    ],
     "dockerfile": "Dockerfile.7.4",
     "tag": "7.4-alpine",
-    "depends_on": ["base/php/**"]
+    "tier": 2
   }
 ]
